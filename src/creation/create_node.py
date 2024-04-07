@@ -1,7 +1,7 @@
 from py2neo import Graph
 from uuid import uuid4
 
-def create_node(graph: Graph, labels, properties = {})-> str:
+def create_node(graph: Graph, labels: list[str], properties = {})-> str:
     # Unir todas las etiquetas en una cadena separada por dos puntos.
     label_str = ":".join(labels)
     properties["uuid"] = str(uuid4())
