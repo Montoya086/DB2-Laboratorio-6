@@ -1,5 +1,6 @@
 from src.creation.create_node import create_node as NodeGraph
 from src.creation.create_relation import create_relation as RelationGraph
+from src.query.user_movie_query import user_movie_query as UserMovieQuery
 from py2neo import Graph
 from uuid import uuid4
 from faker import Faker
@@ -9,7 +10,7 @@ fake = Faker()
 
 graph = Graph("neo4j+s://030df7e1.databases.neo4j.io", auth=("neo4j", "b4VfuDIDUCu3Cbj4SpAxCjZmJtrdEkhy-nCCSMREPbg"))
 
-def main_1():
+def main():
     users = []
     movies = []
     for _ in range(5):
@@ -48,4 +49,4 @@ def main_1():
 
 
 if __name__ == "__main__":
-    main_1()
+    main()
