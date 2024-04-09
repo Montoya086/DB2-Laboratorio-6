@@ -21,8 +21,8 @@ def main():
             "name": user_name,
             "userId": user_id,
         }
-        user_node_id = NodeGraph(graph, labels, properties)
-        users.append(user_node_id)
+        user_node_data = NodeGraph(graph, labels, properties)
+        users.append(user_node_data["uuid"])
 
     for _ in range(10):
         movie_title = fake.company()
@@ -34,12 +34,17 @@ def main():
             "year": int(fake.year()),
             "plot": fake.text(),
         }
-        movie_node_id = NodeGraph(graph, labels, properties)
-        movies.append(movie_node_id)
+        movie_node_data = NodeGraph(graph, labels, properties)
+        movies.append(movie_node_data["uuid"])
 
     for user_node_id in users:
+        rated_movies = []
         for _ in range(2):
             movie_node_id = choice(movies)
+            while movie_node_id in rated_movies:
+                movie_node_id = choice(movies)
+
+            rated_movies.append(movie_node_id)
             rating = randint(0, 5)
             properties = {
                 "rating": rating,
