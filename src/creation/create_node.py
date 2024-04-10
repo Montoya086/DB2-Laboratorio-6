@@ -7,7 +7,6 @@ def create_node(graph: Graph, labels: list[str], properties = {})-> dict[
 ]:
     # Unir todas las etiquetas en una cadena separada por dos puntos.
     label_str = ":".join(labels)
-    print(label_str)
     properties["uuid"] = str(uuid4())
     query = f"CREATE (n:{label_str} $properties)"
     graph.run(query, properties=properties)
